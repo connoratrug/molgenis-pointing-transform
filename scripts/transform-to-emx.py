@@ -6,6 +6,9 @@ import tableService
 
 fileName = 'TAB_test_mogenis_2_2019-08-14-160715176 5.tsv'
 fileFolder = '/Users/connor/Documents/Projecten/Pointing/sprint141/'
+outPutFolder = '/Users/connor/Documents/Projecten/Pointing/sprint142/'
+molgenisGroupPrefix = 'POI_'
+
 filePath = fileFolder + fileName
 
 print('--- load data ' + fileName + ' ---')
@@ -21,9 +24,10 @@ print(df.info())
 df.rename(columns=lambda x: x.strip(), inplace=True)
 
 dfE1C6 = tableService.transformTable(df, 'E1_C6')
-print(dfE1C6.info())
+# print(dfE1C6.info())
 
-outFile = '/Users/connor/Documents/Projecten/Pointing/sprint142/POI_inclusion_1_1.csv'
+molgenisTableName = 'inclusion'
+outFile = outPutFolder + molgenisGroupPrefix + molgenisTableName + '.csv'
 
 dfE1C6.to_csv(outFile, index=False, header=True)
 
